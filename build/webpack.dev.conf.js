@@ -10,8 +10,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
+
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
+
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -19,7 +21,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   },
   // cheap-module-eval-source-map is faster for development
   devtool: config.dev.devtool,
-
   // these devServer options should be customized in /config/index.js
   devServer: {
     clientLogLevel: 'warning',
@@ -52,11 +53,25 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
     new webpack.NoEmitOnErrorsPlugin(),
     // https://github.com/ampedandwired/html-webpack-plugin
+    // new HtmlWebpackPlugin({
+    //   filename: 'index.html',
+    //   template: 'index.html',
+    //   inject: true
+    // }),
+
     new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
-      inject: true
-    }),
+      filename:'./pages/home/index.html', //指定生成的html存放路径
+      template:'./src/pages/home/index.html', //指定html模板路径
+      inject: true, //是否将js等注入页面,以及指定注入的位置'head'或'body'
+      chunks:['pages/home/index'] //需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
+     }),
+     new HtmlWebpackPlugin({
+      filename:'./pages/details/index.html',
+      template:'./src/pages/details/index.html',
+      inject: true,
+      chunks:['pages/details/index']
+     }),
+
     // copy custom static assets
     new CopyWebpackPlugin([
       {
