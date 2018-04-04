@@ -4,34 +4,26 @@ const utils = require('./utils')
 const config = require('../config')
 const vueLoaderConfig = require('./vue-loader.conf')
 
-//mutipages S
-const glob = require('glob')
-var entryJS = glob.sync('./src/pages/**/*.js').reduce(function (prev, curr) {
-  prev[curr.slice(6, -3)] = curr;
-  return prev;
-}, {});
-//mutipages E
-
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
 
-const createLintingRule = () => ({
-  test: /\.(js|vue)$/,
-  loader: 'eslint-loader',
-  enforce: 'pre',
-  include: [resolve('src'), resolve('test')],
-  options: {
-    formatter: require('eslint-friendly-formatter'),
-    emitWarning: !config.dev.showEslintErrorsInOverlay
-  }
-})
+// const createLintingRule = () => ({
+//   test: /\.(js|vue)$/,
+//   loader: 'eslint-loader',
+//   enforce: 'pre',
+//   include: [resolve('src'), resolve('test')],
+//   options: {
+//     formatter: require('eslint-friendly-formatter'),
+//     emitWarning: !config.dev.showEslintErrorsInOverlay
+//   }
+// })
 
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
     'pages/details/index': './src/pages/details/index.js',
-    'pages/home/index': './src/pages/home/index.js'
+    'pages/drill/index': './src/pages/drill/index.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -45,11 +37,13 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
+      'assets':resolve('src/assets'),
+      'static':resolve('static')
     }
   },
   module: {
     rules: [
-      ...(config.dev.useEslint ? [createLintingRule()] : []),
+      // ...(config.dev.useEslint ? [createLintingRule()] : []),
       {
         test: /\.vue$/,
         loader: 'vue-loader',
@@ -59,6 +53,18 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test'), resolve('node_modules/webpack-dev-server/client')]
+      },
+      {
+        "test": /\.css$/,
+        include: [
+          /src/,
+          '/node_modules/element-ui/lib/theme-chalk'
+        ],
+        loaders: ['style', 'css', 'sass']
+      },
+      {
+        test: /\.scss$/,
+        loader: "style-loader!css-loader!sass-loader!"
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
