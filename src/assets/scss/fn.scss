@@ -1,0 +1,3 @@
+@function rem($px){
+  @return $px / 100px * 1rem; //100px为根字体大小
+}

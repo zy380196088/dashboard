@@ -1,18 +1,21 @@
-/* eslint-disable */ 
 <template>
   <div id="app">
-    <router-view keep-alive transition transition-mode="out-in"></router-view>
+    <Layout></Layout>
   </div>
 </template>
-
 <script>
+  import Layout from '@/components/layout/Layout';
   export default {
-    name: 'drill',
+    name: 'pc',
+    components:{
+      Layout
+    }
   }
 
 </script>
 
 <style>
+  @import url('../../assets/scss/common.css');
   html,
   body {
     margin: 0;

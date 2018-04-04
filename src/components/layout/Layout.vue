@@ -1,7 +1,9 @@
 <template>
-  <div class="container">
+  <div class="layout">
     <Header class="header"></Header>
-    <router-view/>
+    <div class="content">
+      <router-view class="view"/>
+    </div>
     <Footer class="footer"></Footer>
   </div>
 </template>
@@ -22,7 +24,7 @@
 
 </script>
 <style lang="scss" scoped>
-.container{
+.layout{
   position: relative;
   width:100%;
   height: 100%;
@@ -32,9 +34,16 @@
     left :0;
   }
   .content{
-    margin: 40px auto;
+    position: absolute;
+    top: 56px;
     width: 100%;
-    max-width: 1200px;
+    height: calc(100% - 56px - 40px);
+    background:rgba(242, 242, 242,1);
+    .view{
+      widows: 1200px;
+      margin :0 auto;
+
+    }
   }
   .footer{
     position: absolute;

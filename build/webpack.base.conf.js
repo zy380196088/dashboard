@@ -22,8 +22,8 @@ function resolve (dir) {
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
-    'pages/details/index': './src/pages/details/index.js',
-    'pages/drill/index': './src/pages/drill/index.js'
+    'pages/pc/index': './src/pages/pc/index.js',
+    'pages/mobile/index': './src/pages/mobile/index.js'
   },
   output: {
     path: config.build.assetsRoot,

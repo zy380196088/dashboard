@@ -60,16 +60,16 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     // }),
 
     new HtmlWebpackPlugin({
-      filename:'./pages/drill/index.html', //指定生成的html存放路径
-      template:'./src/pages/drill/index.html', //指定html模板路径
+      filename:'./pages/pc/index.html', //指定生成的html存放路径
+      template:'./src/pages/pc/index.html', //指定html模板路径
       inject: true, //是否将js等注入页面,以及指定注入的位置'head'或'body'
-      chunks:['pages/drill/index'] //需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
+      chunks:['pages/pc/index'] //需要引入的chunk(模块资源)，不配置就会引入所有页面的资源(js/css),这是个很重要的属性，你可以不配置试试效果
      }),
      new HtmlWebpackPlugin({
-      filename:'./pages/details/index.html',
-      template:'./src/pages/details/index.html',
+      filename:'./pages/mobile/index.html',
+      template:'./src/pages/mobile/index.html',
       inject: true,
-      chunks:['pages/details/index']
+      chunks:['pages/mobile/index']
      }),
 
     // copy custom static assets
