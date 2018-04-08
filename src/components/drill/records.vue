@@ -16,9 +16,9 @@
       Header,
       Footer
     },
-    data() {
+    data(){
       return {
-        title: "创建对抗演练"
+        title:"对战记录"
       }
     },
     mounted: {
@@ -28,19 +28,29 @@
 
 </script>
 <style lang="scss" scoped>
-  .panel-title {
+.panel-wrap {
     width: 100%;
-    height: 56px;
-    line-height: 56px;
-    background-color: #fff;
-    .title-text {
-      width: 1200px;
-      height: 100%;
-      margin: 0 auto;
-      font-size: 20px;
-      font-weight: 700;
-      text-align: left;
+    height: auto;
+    .panel-title {
+      width: 100%;
+      height: 56px;
+      line-height: 56px;
+      background-color: #fff;
+      .title-text {
+        width: 1200px;
+        height: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 700;
+        text-align: left;
+      }
+    }
+    .panel-box {
+      width: 100%;
+      min-height: 800px;
+      height: auto;
+      padding: 20px;
+      background-color: #fff;
     }
   }
-
 </style>
