@@ -3,7 +3,14 @@
     <div class="panel-title">
       <p class="title-text">{{title}}</p>
     </div>
-    <section class="panel-box"></section>
+    <section class="panel-box">
+       <form action="">
+        <el-row>
+          <el-col :span="4"></el-col>
+          <el-col :span="20"></el-col>
+        </el-row>
+      </form>
+    </section>
   </div>
 </template>
 

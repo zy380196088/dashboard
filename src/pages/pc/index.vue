@@ -9,6 +9,28 @@
     name: 'pc',
     components:{
       Layout
+    },
+    data(){
+      return {
+        tableData:[],
+      }
+    },
+    mounted(){
+      this.layuiInit();
+    },
+    methods:{
+      layuiInit(){
+        var _self = this;
+        layui.use('table',function () {  });
+      }
+    },
+    watch:{
+      'tableData':{
+        handler:function(newVal,oldVal){
+          console.log(this.tableData)
+          this.layuiInit()
+        }
+      }
     }
   }
 
